@@ -10,7 +10,7 @@ function App() {
   return <Router>
     <Navbar/>
     <Sidebar/>
-    <Footer/>
+   
     
 
     <Switch>
@@ -47,6 +47,7 @@ function App() {
 
 
     </Switch>
+    <Footer/>
   </Router>
 }
 
