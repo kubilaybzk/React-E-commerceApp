@@ -2,7 +2,33 @@ import React from 'react'
 import styled from 'styled-components'
 
 const Contact = () => {
-  return <h4>contact section</h4>
+  return (
+    <Wrapper>
+      <div className='section-center'>
+        <h3>E-Bülten</h3>
+        <div className='content'>
+          <p>
+          Gelişmelerden haberdar olmak için abone olun.
+          </p>
+          <form
+            className='contact-form'
+            action='your form spree id'
+            method='POST'
+          >
+            <input
+              type='email'
+              className='form-input'
+              placeholder='Email Adresinizi Giriniz.'
+              name='_replyto'
+            />
+            <button type='submit' className='submit-btn'>
+              Abone Ol
+            </button>
+          </form>
+        </div>
+      </div>
+    </Wrapper>
+  )
 }
 const Wrapper = styled.section`
   padding: 5rem 0;

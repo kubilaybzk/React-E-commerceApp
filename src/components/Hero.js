@@ -8,7 +8,7 @@ const Hero = () => {
   return <Wrapper className="section-center">
     <article className="content"> 
     <h1>Kendi tarzınızı<br/>
-     KEndiniz oluşturun.
+     Kendiniz oluşturun.
 
     </h1>
     <p>

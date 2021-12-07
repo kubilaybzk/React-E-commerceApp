@@ -22,24 +22,27 @@ export const services = [
   {
     id: 1,
     icon: <GiCompass />,
-    title: 'mission',
+    title: 'Misyonumuz',
     text:
-      'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ea. Perferendis corrupti reiciendis nesciunt rerum velit autem unde numquam nisi',
+      'Tasarımları ve rahatlığı ile ev dekorasyon trendlerine yön veren, üretim kalitesi ile de global ölçekte markalaşıp, ülke ekonomisine katkıda bulunan bir firma olmaya çalışmaktır.',
   },
   {
     id: 2,
     icon: <GiDiamondHard />,
-    title: 'vision',
+    title: 'Vizyonumuz',
     text:
-      'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ea. Perferendis corrupti reiciendis nesciunt rerum velit autem unde numquam nisi',
+      'Misyonumuz sadece ihtiyaçlara uygun mobilyalar üretmekle sınırlı olmayıp, kalite ve sınıfında en başarılı isimlerden biri olmaya çalışmaktır.',
   },
   {
     id: 3,
     icon: <GiStabbedNote />,
-    title: 'history',
+    title: 'Hikayemiz',
     text:
-      'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ea. Perferendis corrupti reiciendis nesciunt rerum velit autem unde numquam nisi',
+      `1998'de Hanzade Doğan tarafından ilk tohumları atılan ve 2001 yılından itibaren Hepsiburada markasıyla devam ettiğimiz yolculuğumuzda bugün Türkiye'nin Hepsiburada'sı olarak, 30'dan fazla kategoride, 44 milyon ürün çeşidini müşterilerimizle buluşturuyoruz. Silikon Vadisi ile Kapalı Çarşı kültürünü, veri ile tecrübeyi harmanlayan ekibimizle, aylık 250 milyonun üzerinde ziyarete ev sahipliği yapıyoruz.*`
+
+      
   },
+  
 ]
 
 export const products_url = 'https://course-api.com/react-store-products'
