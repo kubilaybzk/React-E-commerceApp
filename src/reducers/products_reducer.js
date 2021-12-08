@@ -43,27 +43,37 @@ const products_reducer = (state, action) => {
     //Faydalanacağımız foknksiyon.
     return { ...state, products_loading: false, products_error: true }
   }
+
+
   if (action.type === GET_SINGLE_PRODUCT_BEGIN) {
+    //Üstte genel olarak uygulamalar için yaptığımız bütün uygulamaları burada tek bir ürüne göre yeniden düzenliyoruz.
+    //Eğer çalışma başladı ise loading sekmesinin çalışması için gerekli olan state durumunun oluşturuyoruz.
     return {
       ...state,
-      single_product_loading: true,
-      single_product_error: false,
+      single_product_loading: true,//Yükleme yapılabilir. Bundan dolayı true
+      single_product_error: false,//Tarama başladı herhangi bir hata yok bundan dolayı false
     }
   }
+
+
   if (action.type === GET_SINGLE_PRODUCT_SUCCESS) {
     return {
       ...state,
-      single_product_loading: false,
-      single_product: action.payload,
+      single_product_loading: false, //Yükleme bitti false olması gerekir
+      single_product: action.payload, //Yüklenen datanın return etmesini için gerekli olan fonksiyon.
     }
   }
+
+
   if (action.type === GET_SINGLE_PRODUCT_ERROR) {
     return {
       ...state,
-      single_product_loading: false,
-      single_product_error: true,
+      single_product_loading: false, //Burada yükleme işleminin false olması gerekiyor
+      single_product_error: true,     // Eğer hata varsa bunu ekrana yazdırabilmemiz için olan kısım.
     }
   }
+
+
   throw new Error(`No Matching "${action.type}" - action type`)
 }
 
