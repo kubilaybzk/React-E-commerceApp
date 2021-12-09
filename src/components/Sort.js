@@ -33,7 +33,7 @@ const Sort = () => {
       <hr />
       <form>
         <label htmlFor="sort" style={{ marginRight: "18px" }}>
-          sort by
+          Sırala
         </label>
         <select
           name="sort"
