@@ -16,7 +16,8 @@ import products_reducer from '../reducers/products_reducer'
 const initialState = {
   filtered_products:[],
   all_products:[],
-  grid_view:false, // Burası grid view gösterimi için kullanılacak.
+  grid_view:true, // Burası grid view gösterimi için kullanılacakürünlerin alt alta açıklamalı yada normal olmasını sağlamak için düzenlenen bir sistem.
+  sort:'price-lowest'
 }
 
 const FilterContext = React.createContext()
@@ -34,8 +35,32 @@ useEffect(()=>{
   dispatch({type:LOAD_PRODUCTS,payload:products})
 },[products])
 
-console.log(products)
+useEffect(() => {
+  dispatch({ type: FILTER_PRODUCTS })
+  dispatch({ type: SORT_PRODUCTS })
+}, [products, state.sort, state.filters])
 
+
+  
+const setGridView = () => {
+  dispatch({type:SET_GRIDVIEW})
+}
+
+
+const setListView = () => {
+  dispatch({type:SET_LISTVIEW})
+}
+
+
+const updateSort=(e)=>{
+  /* Kullanıcıdan gelen bilgilere göre sıralama yapılan yer.
+  Burada e.targer.name ise sort isimli form'dan bu bilginin geldiğini biliyoruz.
+  Burada dispatch ederek gerekli sıralama işlemi yapılması sağlanıyor. */
+//const userwant=e.target.name 
+const userwant_value=e.target.value
+//console.log(userwant,userwant_value)
+dispatch({ type: UPDATE_SORT, payload: userwant_value })
+}
 
 
 
@@ -45,7 +70,7 @@ console.log(products)
 
 
   return (
-    <FilterContext.Provider value={{...state}}>
+    <FilterContext.Provider value={{...state,setGridView,setListView,updateSort}}>
       {children}
     </FilterContext.Provider>
   )
