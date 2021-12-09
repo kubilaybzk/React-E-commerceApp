@@ -29,7 +29,7 @@ const Sort = () => {
           <BsList />
         </button>
       </div>
-      <p>{products.length} products found</p>
+      <p>{products.length} Ürün bulundu</p>
       <hr />
       <form>
         <label htmlFor="sort" style={{ marginRight: "18px" }}>
