@@ -71,13 +71,27 @@ export const FilterProvider = ({ children }) => {
     //state işlemini yapıyoruz.
     //initialState içinde bulunan TEXT değişkeni defauld olarak '' ayarlanmış.
     //Burada amacımız bu değişkeni buna göre düzenemek.
-    const name=e.target.name
-    const value = e.target.value
+    let name = e.target.name
+    let value = e.target.value
         //console.log(name,value)
-    dispatch({type:UPDATE_FILTERS ,payload:{name,value}})
+        if (name === 'category') {
+          value = e.target.textContent
+        }
+        if (name === 'color') {
+          value = e.target.dataset.color
+        }
+        if (name === 'price') {
+          value = Number(value)
+        }
+        if (name === 'shipping') {
+          value = e.target.checked
+        }
+        dispatch({ type: UPDATE_FILTERS, payload: { name, value } })
   };
 
-  const clearFılters = () => {};
+  const clearFilters = () => {
+    dispatch({ type: CLEAR_FILTERS })
+  }
 
   return (
     <FilterContext.Provider
@@ -87,7 +101,7 @@ export const FilterProvider = ({ children }) => {
         setListView,
         updateSort,
         updateFilters,
-        clearFılters,
+        clearFilters,
       }}
     >
       {children}

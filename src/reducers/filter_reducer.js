@@ -12,7 +12,7 @@ import {
 const filter_reducer = (state, action) => {
   if (action.type === LOAD_PRODUCTS) {
     let maxPrice = action.payload.map((p) => p.price);
-    maxPrice = Math.max(...maxPrice);//Burada gelen ürünler arasında max fiyatı buluyoruz.
+    maxPrice = Math.max(...maxPrice); //Burada gelen ürünler arasında max fiyatı buluyoruz.
     /*Bunu yapmamızdaki amaç 
         öncelikle ürünleri sıralarken  bütün ürünleri göstermek için 
         default değeri 0 olan "price:0" değerini max değer yapıyoruz.
@@ -96,27 +96,79 @@ sort hookuna aktarıyoruz.
     return { ...state, filtered_products: tempProducts };
   }
 
-
   /* Ürünler sayfasında bulunan solda bulunan filtreleme işlemleri Başlangıç */
 
-if(action.type===UPDATE_FILTERS){
-  const{name,value}=action.payload
-  return {...state,filters:{...state.filters,[name]:value}}
-}
+  if (action.type === UPDATE_FILTERS) {
+    const { name, value } = action.payload;
+    return { ...state, filters: { ...state.filters, [name]: value } };
+  }
+  /* Burada filtreleme işlemlerini uyguluyoruz 
+Burada amacımız filtrelemeler yapılırken kullanılan filtre çeşitlerine göre sonuçları göstermek
+Mesela Tüm ürünlerden sadece Office seçili olanların listelenmesi gibi gibi ...
 
-if(action.type===FILTER_PRODUCTS){
-  console.log('FILTER_PRODUCTS work')
-  return{...state}
-}
+  */
+  if (action.type === FILTER_PRODUCTS) {
+    const { all_products } = state;
+    const { text, category, company, color, price, shipping } = state.filters;
+
+    let tempProducts = [...all_products];
+    // filtering
+    // text
+    if (text) {
+      tempProducts = tempProducts.filter((product) => {
+        return product.name.toLowerCase().startsWith(text);
+      });
+    }
+    // category
+    if (category !== "all") {
+      tempProducts = tempProducts.filter(
+        (product) => product.category === category
+      );
+    }
+
+    // company
+    if (company !== "all") {
+      tempProducts = tempProducts.filter(
+        (product) => product.company === company
+      );
+    }
+    // colors
+    if (color !== "all") {
+      tempProducts = tempProducts.filter((product) => {
+        return product.colors.find((c) => c === color);
+      });
+    }
+    // price
+    tempProducts = tempProducts.filter((product) => product.price <= price);
+    // shipping
+    if (shipping) {
+      tempProducts = tempProducts.filter(
+        (product) => product.shipping === true
+      );
+    }
+
+    return { ...state, filtered_products: tempProducts };
+  }
+/*Burada amacımız bütün uygulanan filtrelerin temizlemek. bunun için bütün değerleri 
+defauld değere atamak gerekir.
+
+*/ 
+  if (action.type === CLEAR_FILTERS) {
+    return {
+      ...state,
+      filters: {
+        ...state.filters,
+        text: "",
+        company: "all",
+        category: "all",
+        color: "all",
+        price: state.filters.max_price,
+        shipping: false,
+      },
+    };
+  }
 
   /* Ürünler sayfasında bulunan solda bulunan filtreleme işlemleri Bitiş */
-
-
-
-
-
-
-
 
   return state;
   throw new Error(`No Matching "${action.type}" - action type`);
