@@ -27,7 +27,7 @@ const CartTotals = () => {
         </article>
          
           <Link to='/checkout' className='btn'>
-            Ödeme yap.
+            Ödeme yap
           </Link>
         
           <button type='button' className='btn' >
