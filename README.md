@@ -2,6 +2,8 @@
 
 Öncelikle şunu belirtmek isterimbu proje react öğrenirken geliştirildi projenin asıl sahibi [
 John Smilga](https://github.com/john-smilga)'dır. Udemy üzerinde vermiş olduğu [React Tutorial and Projects Course](https://www.udemy.com/course/react-tutorial-and-projects-course/?referralCode=FEE6A921AF07E2563CEF) kursu takip edilerek geliştirilmiştir.
+[Link text Here](https://kb-commerce.kubilaybzk.dev/)
+
 
 
 
